@@ -9,12 +9,13 @@ module BitBot
     end
 
     def offers
+      map = { price: :original_price }
       resp = client.get_market_depth
       asks = resp['ask'].collect do |offer|
-        Offer.new offer
+        Offer.new rekey(offer, map)
       end
       bids = resp['bid'].collect do |offer|
-        Offer.new offer
+        Offer.new rekey(offer, map)
       end
       {asks: asks, bids: bids}
     end
@@ -45,6 +46,11 @@ module BitBot
 
     def cancel(order_id)
       client.cancel order_id
+    end
+
+    def sync(order_id)
+      hash = client.get_order order_id
+      build_order(hash)
     end
 
     ### ACCOUNT ###
