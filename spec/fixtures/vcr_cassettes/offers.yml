@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://KEY:10c3a384ddbe5c356a872e5669d5451184fd2824@api.btcchina.com/api_trade_v1.php
+    body:
+      encoding: UTF-8
+      string: '{"tonce":"1389192558183368","accesskey":"KEY","requestmethod":"post","id":"1389192558183368","method":"getMarketDepth2","params":[]}'
+    headers:
+      Accept-Encoding:
+      - identity
+      Json-Rpc-Tonce:
+      - '1389192558183368'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Kublai
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.3
+      Date:
+      - Wed, 08 Jan 2014 14:49:21 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '688'
+      Connection:
+      - close
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=291f67513426791abd43fd402577fcfc; expires=Wed, 08-Jan-2014 16:49:21
+        GMT; path=/; domain=.btcchina.com
+      - PHPSESSID=ef6a782226f21c474aa002f690ac4b14; expires=Wed, 08-Jan-2014 16:49:21
+        GMT; path=/; domain=.btcchina.com
+      - incap_ses_133_88065=aERhIEJkIymqh+cUwIPYAXBlzVIAAAAA7wyvpmZOVUHcyM/mhp2qFg==;
+        path=/; Domain=.btcchina.com
+      - nlbi_88065=8j9wfXhCeE0npFsXbT6h7QAAAABKuNc6YeBZvJSti8YsrGG5; path=/; Domain=.btcchina.com
+      - visid_incap_88065=osubMjrVRPWdAjAH7Yq4TnBlzVIAAAAAQUIPAAAAAAAankqpMubnsCW2R3N1agdw;
+        expires=Fri, 08 Jan 2016 09:30:35 GMT; path=/; Domain=.btcchina.com
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Powered-By:
+      - PHP/5.4.21
+      Front-End-Https:
+      - 'on'
+      X-Iinfo:
+      - 5-8787577-8788253 NNNY CT(100 100 0) RT(1389192558981 1230) q(0 0 2 -1) r(2
+        5) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: UTF-8
+      string: '{"result":{"market_depth":{"bid":[{"price":4882.99,"amount":52.428},{"price":4882.98,"amount":12.096},{"price":4880.55,"amount":0.393},{"price":4858.62,"amount":0.005},{"price":4858.61,"amount":0.05},{"price":4855,"amount":0.026},{"price":4851.15,"amount":0.1},{"price":4850.19,"amount":0.1},{"price":4850,"amount":0.32},{"price":4846,"amount":0.1}],"ask":[{"price":4883,"amount":43.088},{"price":4884,"amount":0.132},{"price":4886.88,"amount":0.017},{"price":4888,"amount":0.847},{"price":4888.98,"amount":0.023},{"price":4890,"amount":0.2},{"price":4898,"amount":5.07},{"price":4899,"amount":0.005},{"price":4900,"amount":10.532},{"price":4901,"amount":1.25}]}},"id":"1389192558183368"}'
+    http_version: 
+  recorded_at: Wed, 08 Jan 2014 14:49:23 GMT
+recorded_with: VCR 2.8.0

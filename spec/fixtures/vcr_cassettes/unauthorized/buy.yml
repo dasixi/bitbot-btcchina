@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://KEY:fa7f186f1ef06f49631f8753ec1e09096898a49e@api.btcchina.com/api_trade_v1.php
+    body:
+      encoding: UTF-8
+      string: '{"tonce":"1389199980428694","accesskey":"KEY","requestmethod":"post","id":"1389199980428694","method":"buyOrder","params":[833,0.01]}'
+    headers:
+      Accept-Encoding:
+      - identity
+      Json-Rpc-Tonce:
+      - '1389199980428694'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Kublai
+  response:
+    status:
+      code: 401
+      message: Unauthorized - invalid access key
+    headers:
+      Server:
+      - nginx/1.4.4
+      Date:
+      - Wed, 08 Jan 2014 16:53:07 GMT
+      Content-Type:
+      - text/html; charset=UTF-8
+      Content-Length:
+      - '17'
+      Connection:
+      - close
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=80245kkfephv4qsovlcvt5n8f7; expires=Wed, 08-Jan-2014 18:53:02 GMT;
+        path=/; domain=.btcchina.com
+      - PHPSESSID=s9bt4d8emifi91rou8v5a2snt2; expires=Wed, 08-Jan-2014 18:53:02 GMT;
+        path=/; domain=.btcchina.com
+      Vary:
+      - User-Agent
+      Www-Authenticate:
+      - Basic realm="Auth"
+      X-Powered-By:
+      - PHP/5.4.21
+    body:
+      encoding: UTF-8
+      string: |
+        401 Unauthorized
+    http_version: 
+  recorded_at: Wed, 08 Jan 2014 16:53:02 GMT
+recorded_with: VCR 2.8.0

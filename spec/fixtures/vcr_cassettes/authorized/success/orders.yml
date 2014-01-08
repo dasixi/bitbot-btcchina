@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://KEY:d1dbb51f1bf659613800d0ef970727a85180b6f1@api.btcchina.com/api_trade_v1.php
+    body:
+      encoding: UTF-8
+      string: '{"tonce":"1389199593225714","accesskey":"KEY","requestmethod":"post","id":"1389199593225714","method":"getOrders","params":[]}'
+    headers:
+      Accept-Encoding:
+      - identity
+      Json-Rpc-Tonce:
+      - '1389199593225714'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Kublai
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.2
+      Date:
+      - Wed, 08 Jan 2014 16:46:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '497'
+      Connection:
+      - close
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=mhfrdifl9jh9s52iv768i52vl0; expires=Wed, 08-Jan-2014 18:46:35 GMT;
+        path=/; domain=.btcchina.com
+      - PHPSESSID=uduva2bjvplsghvqubphgoruh2; expires=Wed, 08-Jan-2014 18:46:35 GMT;
+        path=/; domain=.btcchina.com
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Powered-By:
+      - PHP/5.4.21
+      Front-End-Https:
+      - 'on'
+      - 'on'
+    body:
+      encoding: UTF-8
+      string: '{"result":{"order":[{"id":9822031,"type":"ask","price":"12345.00","currency":"CNY","amount":"0.01000000","amount_original":"0.01000000","date":1389199541,"status":"open"},{"id":9822030,"type":"bid","price":"2345.00","currency":"CNY","amount":"0.01000000","amount_original":"0.01000000","date":1389199539,"status":"open"},{"id":9822028,"type":"bid","price":"1234.00","currency":"CNY","amount":"0.01000000","amount_original":"0.01000000","date":1389199536,"status":"open"}]},"id":"1389199593225714"}'
+    http_version: 
+  recorded_at: Wed, 08 Jan 2014 16:46:35 GMT
+recorded_with: VCR 2.8.0

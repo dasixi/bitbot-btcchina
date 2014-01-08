@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://KEY:3eb8197fb2e71e7368e75c787ec49eb97264aac4@api.btcchina.com/api_trade_v1.php
+    body:
+      encoding: UTF-8
+      string: '{"tonce":"1389198306848819","accesskey":"KEY","requestmethod":"post","id":"1389198306848819","method":"buyOrder","params":[4800,0.01]}'
+    headers:
+      Accept-Encoding:
+      - identity
+      Json-Rpc-Tonce:
+      - '1389198306848819'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Kublai
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.2
+      Date:
+      - Wed, 08 Jan 2014 16:25:09 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '39'
+      Connection:
+      - close
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=fvuqc4sh16k5aigr1f7qom2up0; expires=Wed, 08-Jan-2014 18:25:08 GMT;
+        path=/; domain=.btcchina.com
+      - PHPSESSID=ssdon9dm03a9umuskbeppdrjp3; expires=Wed, 08-Jan-2014 18:25:08 GMT;
+        path=/; domain=.btcchina.com
+      Vary:
+      - User-Agent
+      X-Powered-By:
+      - PHP/5.4.21
+      Front-End-Https:
+      - 'on'
+      - 'on'
+    body:
+      encoding: UTF-8
+      string: '{"result":true,"id":"1389198306848819"}'
+    http_version: 
+  recorded_at: Wed, 08 Jan 2014 16:25:08 GMT
+- request:
+    method: post
+    uri: https://KEY:a869cd0a047c4e95ffe295eb5ef5963e8afe69f3@api.btcchina.com/api_trade_v1.php
+    body:
+      encoding: UTF-8
+      string: '{"tonce":"1389198308196977","accesskey":"KEY","requestmethod":"post","id":"1389198308196977","method":"getOrders","params":[]}'
+    headers:
+      Accept-Encoding:
+      - identity
+      Json-Rpc-Tonce:
+      - '1389198308196977'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Kublai
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.4
+      Date:
+      - Wed, 08 Jan 2014 16:25:18 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '47'
+      Connection:
+      - close
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=i8d4cnkntcdu2vvtf15i0eb9p3; expires=Wed, 08-Jan-2014 18:25:13 GMT;
+        path=/; domain=.btcchina.com
+      - PHPSESSID=ulkhd2uqm91jmvv6skfernjkp2; expires=Wed, 08-Jan-2014 18:25:13 GMT;
+        path=/; domain=.btcchina.com
+      Vary:
+      - User-Agent
+      X-Powered-By:
+      - PHP/5.4.21
+      Front-End-Https:
+      - 'on'
+      - 'on'
+    body:
+      encoding: UTF-8
+      string: '{"result":{"order":[]},"id":"1389198308196977"}'
+    http_version: 
+  recorded_at: Wed, 08 Jan 2014 16:25:13 GMT
+recorded_with: VCR 2.8.0
