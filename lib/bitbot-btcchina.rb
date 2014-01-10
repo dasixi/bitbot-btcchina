@@ -38,22 +38,22 @@ module BitBot
     ### PRIVATE ###
     def buy(options)
       raise UnauthorizedError unless have_key?
-      amount = options[:amount]
-      price = options[:price]
+      amount = options[:amount].to_f
+      price = options[:price].to_f
       resp = client.buy price, amount
       check_response(resp)
 
-      orders.first || Order.new(agent: self, side: 'buy', price: options[:price], amount: options[:amount], remaining: options[:amount], status: 'closed')
+      orders.detect{|order| order.price == price } || Order.new(agent: self, side: 'buy', price: price, amount: amount, remaining: amount, status: 'closed')
     end
 
     def sell(options)
       raise UnauthorizedError unless have_key?
-      amount = options[:amount]
-      price = options[:price]
+      amount = options[:amount].to_f
+      price = options[:price].to_f
       resp = client.sell price, amount
       check_response(resp)
 
-      orders.first || Order.new(agent: self, side: 'sell', price: options[:price], amount: options[:amount], remaining: options[:amount], status: 'closed')
+      orders.detect{|order| order.price == price} || Order.new(agent: self, side: 'sell', price: price, amount: amount, remaining: amount, status: 'closed')
     end
 
     def cancel(order_id)
@@ -91,6 +91,10 @@ module BitBot
       1
     end
 
+    def client
+      @client ||= Kublai::BTCChina.new @key, @secret
+    end
+
     private
     def check_response(response)
       return if response.is_a?(Array)
@@ -113,20 +117,24 @@ module BitBot
 
     def build_order(hash)
       map = {
+        id: :order_id,
         amount: :remaining,
         amount_original: :amount,
         type: :side,
         date: :timestamp
       }
-      Order.new rekey(hash, map).merge(original: hash, agent: self)
+      order = Order.new rekey(hash, map).merge(original: hash, agent: self)
+      order.side = case order.side
+                   when 'ask' then 'sell'
+                   when 'bid' then 'buy'
+                   else
+                     raise Error, "Don't know order #{order.inspect} 's side #{order.side}"
+                   end
+      order
     end
 
     def have_key?
       @key && @secret
-    end
-
-    def client
-      @client ||= Kublai::BTCChina.new @key, @secret
     end
   end
 end

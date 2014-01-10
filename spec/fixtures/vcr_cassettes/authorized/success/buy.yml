@@ -103,7 +103,7 @@ http_interactions:
       - 'on'
     body:
       encoding: UTF-8
-      string: '{"result":{"order":[]},"id":"1389198308196977"}'
+      string: '{"result":{"order":[{"id":9822031,"type":"ask","price":"12345.00","currency":"CNY","amount":"0.01000000","amount_original":"0.01000000","date":1389199541,"status":"open"},{"id":9822030,"type":"bid","price":"4800.00","currency":"CNY","amount":"0.01000000","amount_original":"0.01000000","date":1389199539,"status":"open"},{"id":9822028,"type":"bid","price":"1234.00","currency":"CNY","amount":"0.01000000","amount_original":"0.01000000","date":1389199536,"status":"open"}]},"id":"1389198308196977"}'
     http_version: 
   recorded_at: Wed, 08 Jan 2014 16:25:13 GMT
 recorded_with: VCR 2.8.0

@@ -16,11 +16,12 @@ describe BitBot::Btcchina do
       subject { VCR.use_cassette('authorized/success/buy', record: :new_episodes, match_requests_on: [:method, body_matcher]){ BitBot[:btcchina].new.buy amount: 0.01, price: 4800 } }
 
       it 'bought 0.01 bitcoin at price CNY 4800' do
+        expect(subject.order_id).to eq(9822030)
         expect(subject.side).to eq('buy')
         expect(subject.price).to eq(4800.0)
         expect(subject.amount).to eq(0.01)
         expect(subject.remaining).to eq(0.01)
-        expect(subject.status).to eq('closed')
+        expect(subject.status).to eq('open')
       end
     end
 
@@ -28,6 +29,7 @@ describe BitBot::Btcchina do
       subject { VCR.use_cassette('authorized/success/sell', record: :new_episodes, match_requests_on: [:method, body_matcher]){ BitBot[:btcchina].new.sell amount: 0.01, price: 4400 } }
 
       it 'sold 0.01 bitcoin at price CNY 4400' do
+        expect(subject.order_id).to be_nil
         expect(subject.side).to eq('sell')
         expect(subject.price).to eq(4400.0)
         expect(subject.amount).to eq(0.01)
@@ -48,7 +50,7 @@ describe BitBot::Btcchina do
       subject { VCR.use_cassette('authorized/success/sync', match_requests_on: [:method, body_matcher]){ BitBot[:btcchina].new.sync 9822031 } }
 
       it 'updated an order status' do
-        expect(subject.side).to eq('ask')
+        expect(subject.side).to eq('sell')
         expect(subject.price).to eq(12345.0)
         expect(subject.amount).to eq(0.01)
         expect(subject.remaining).to eq(0.01)
@@ -61,7 +63,7 @@ describe BitBot::Btcchina do
 
       it 'fetched all account orders' do
         expect(subject.size).to eq(3)
-        expect(subject.first.side).to eq('ask')
+        expect(subject.first.side).to eq('sell')
         expect(subject.first.price).to eq(12345)
       end
     end
