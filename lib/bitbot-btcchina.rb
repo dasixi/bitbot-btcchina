@@ -43,7 +43,7 @@ module BitBot
       resp = client.buy price, amount
       check_response(resp)
 
-      orders.detect{|order| order.price == price } || Order.new(agent: self, side: 'buy', price: price, amount: amount, remaining: amount, status: 'closed')
+      orders.detect{|order| order.price == price } || Order.new(agent: self, side: 'buy', price: price, amount: amount, remaining: 0, status: 'closed')
     end
 
     def sell(options)
@@ -53,7 +53,7 @@ module BitBot
       resp = client.sell price, amount
       check_response(resp)
 
-      orders.detect{|order| order.price == price} || Order.new(agent: self, side: 'sell', price: price, amount: amount, remaining: amount, status: 'closed')
+      orders.detect{|order| order.price == price} || Order.new(agent: self, side: 'sell', price: price, amount: amount, remaining: 0, status: 'closed')
     end
 
     def cancel(order_id)

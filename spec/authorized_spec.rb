@@ -19,6 +19,7 @@ describe BitBot::Btcchina do
         expect(subject.order_id).to eq(9822030)
         expect(subject.side).to eq('buy')
         expect(subject.price).to eq(4800.0)
+        expect(subject.avg_price).to eq(0.0)
         expect(subject.amount).to eq(0.01)
         expect(subject.remaining).to eq(0.01)
         expect(subject.status).to eq('open')
@@ -32,8 +33,9 @@ describe BitBot::Btcchina do
         expect(subject.order_id).to be_nil
         expect(subject.side).to eq('sell')
         expect(subject.price).to eq(4400.0)
+        expect(subject.avg_price).to eq(0.0)
         expect(subject.amount).to eq(0.01)
-        expect(subject.remaining).to eq(0.01)
+        expect(subject.remaining).to eq(0.0)
         expect(subject.status).to eq('closed')
       end
     end
