@@ -69,5 +69,14 @@ describe BitBot::Btcchina do
         expect(subject.first.price).to eq(12345)
       end
     end
+
+    describe "#account" do
+      subject { VCR.use_cassette('authorized/success/account', match_requests_on: [:method, body_matcher]){ BitBot[:btcchina].new.account } }
+
+      it 'fetched account balances' do
+        expect(subject.btc_balance.amount).to eq(2.13755)
+        expect(subject.fiat_balance.amount).to eq(8851.29303)
+      end
+    end
   end
 end

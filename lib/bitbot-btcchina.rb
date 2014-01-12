@@ -72,7 +72,6 @@ module BitBot
       build_order(resp['order'])
     end
 
-    ### ACCOUNT ###
     def orders
       raise UnauthorizedError unless have_key?
       resp = client.get_orders
@@ -83,6 +82,15 @@ module BitBot
       end
     end
 
+    def account
+      raise UnauthorizedError unless have_key?
+      resp = client.get_account_info
+      check_response(resp)
+
+      build_account(resp)
+    end
+
+    ### HELPER METHODS ###
     def currency
       'CNY'
     end
@@ -131,6 +139,18 @@ module BitBot
                      raise Error, "Don't know order #{order.inspect} 's side #{order.side}"
                    end
       order
+    end
+
+    def build_account(hash)
+      account = Account.new agent: self
+
+      balance = hash['balance']
+      btc_balance = balance['btc']
+      cny_balance = balance['cny']
+
+      account.balances << Balance.new(currency: 'BTC', amount: btc_balance['amount'], agent: self)
+      account.balances << Balance.new(currency: 'CNY', amount: cny_balance['amount'], agent: self)
+      account
     end
 
     def have_key?

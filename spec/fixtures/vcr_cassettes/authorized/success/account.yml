@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://KEY:f5977298ec9262a163938213b930f9247eec359d@api.btcchina.com/api_trade_v1.php
+    body:
+      encoding: UTF-8
+      string: '{"tonce":"1389537077663899","accesskey":"KEY","requestmethod":"post","id":"1389537077663899","method":"getAccountInfo","params":[]}'
+    headers:
+      Accept-Encoding:
+      - identity
+      Json-Rpc-Tonce:
+      - '1389537077663899'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Kublai
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.3
+      Date:
+      - Sun, 12 Jan 2014 14:31:21 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '741'
+      Connection:
+      - close
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - PHPSESSID=5f60beaa34be564d61384829191f9c0d; expires=Sun, 12-Jan-2014 16:31:20
+        GMT; path=/; domain=.btcchina.com
+      - PHPSESSID=7f43e2d18281ea4eefdf1128113841ef; expires=Sun, 12-Jan-2014 16:31:20
+        GMT; path=/; domain=.btcchina.com
+      - incap_ses_144_88065=EF8nY8aVfFE2+Rz8Dar/ATin0lIAAAAA/4SlxKtfknbWxO1pU/wzjQ==;
+        path=/; Domain=.btcchina.com
+      - nlbi_88065=0EEEZT41KUX+zmyHbT6h7QAAAABO0mAyKMJAKGKaFKOhJyFO; path=/; Domain=.btcchina.com
+      - visid_incap_88065=rZb5RpFcQvSdgFxLDbb2Zjen0lIAAAAAQUIPAAAAAABqaGZs43l+ehD08DIEafMA;
+        expires=Tue, 12 Jan 2016 09:00:20 GMT; path=/; Domain=.btcchina.com
+      Vary:
+      - Accept-Encoding,User-Agent
+      X-Powered-By:
+      - PHP/5.4.21
+      Front-End-Https:
+      - 'on'
+      X-Iinfo:
+      - 8-82230488-82230649 NNNY CT(170 172 0) RT(1389537078844 809) q(0 0 3 0) r(3
+        7) U5
+      X-Cdn:
+      - Incapsula
+    body:
+      encoding: UTF-8
+      string: '{"result":{"profile":{"username":"test","trade_password_enabled":true,"otp_enabled":true,"trade_fee":0.3,"daily_btc_limit":10,"btc_deposit_address":"1KM9iuwNMpGVJ7bmjm91YcnGpx5Z1Cdisi","btc_withdrawal_address":"1AKRJLs8stkRtRN8DYL3kaBtN84QUNCyaQ"},"balance":{"btc":{"currency":"BTC","symbol":"\u0e3f","amount":"2.13755000","amount_integer":"213755000","amount_decimal":8},"cny":{"currency":"CNY","symbol":"\u00a5","amount":"8851.29303","amount_integer":"885129303","amount_decimal":5}},"frozen":{"btc":{"currency":"BTC","symbol":"\u0e3f","amount":"0.00000000","amount_integer":"0","amount_decimal":8},"cny":{"currency":"CNY","symbol":"\u00a5","amount":"35.79000","amount_integer":"3579000","amount_decimal":5}}},"id":"1389537077663899"}'
+    http_version: 
+  recorded_at: Sun, 12 Jan 2014 14:31:21 GMT
+recorded_with: VCR 2.8.0
