@@ -12,15 +12,15 @@ module BitBot
     end
 
     def offers
-      resp = client.get_market_depth
+      resp = client.get_orderbook
       check_response(resp)
 
-      asks = resp['ask'].collect do |offer|
-        Offer.new offer.merge(original: offer, agent: self)
+      asks = resp['ask'].reverse.collect do |arr|
+        Offer.new price: arr[0], amount: arr[1], original: arr, agent: self
       end
 
       bids = resp['bid'].collect do |offer|
-        Offer.new offer.merge(original: offer, agent: self)
+        Offer.new price: arr[0], amount: arr[1], original: arr, agent: self
       end
       {asks: asks, bids: bids}
     end
