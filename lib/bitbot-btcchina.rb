@@ -15,11 +15,11 @@ module BitBot
       resp = client.get_orderbook
       check_response(resp)
 
-      asks = resp['ask'].reverse.collect do |arr|
+      asks = resp['asks'].reverse.collect do |arr|
         Offer.new price: arr[0], amount: arr[1], original: arr, agent: self
       end
 
-      bids = resp['bid'].collect do |offer|
+      bids = resp['bids'].collect do |arr|
         Offer.new price: arr[0], amount: arr[1], original: arr, agent: self
       end
       {asks: asks, bids: bids}
