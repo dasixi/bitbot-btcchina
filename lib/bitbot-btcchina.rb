@@ -15,7 +15,7 @@ module BitBot
       resp = client.get_market_depth
       check_response(resp)
 
-      asks = resp['ask'].reverse.collect do |offer|
+      asks = resp['ask'].collect do |offer|
         Offer.new offer.merge(original: offer, agent: self)
       end
 
