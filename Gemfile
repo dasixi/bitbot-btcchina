@@ -1,8 +1,8 @@
 source 'http://ruby.taobao.org'
 
-gem 'kublai', path: '../kublai'
+gem 'kublai', git: 'https://github.com/dasixi/Kublai.git'
 
-gem 'bitbot', path: '../bitbot'
+gem 'bitbot', git: 'https://github.com/peatio/bitbot.git'
 
 group :test do
   gem 'rspec'
