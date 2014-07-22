@@ -38,22 +38,24 @@ module BitBot
     ### PRIVATE ###
     def buy(options)
       raise UnauthorizedError unless have_key?
+
       amount = options[:amount].to_f
       price = options[:price].to_f
       resp = client.buy price, amount
       check_response(resp)
 
-      orders.detect{|order| order.price == price } || Order.new(agent: self, side: 'buy', price: price, amount: amount, remaining: 0, status: 'closed')
+      sync resp
     end
 
     def sell(options)
       raise UnauthorizedError unless have_key?
+
       amount = options[:amount].to_f
       price = options[:price].to_f
       resp = client.sell price, amount
       check_response(resp)
 
-      orders.detect{|order| order.price == price} || Order.new(agent: self, side: 'sell', price: price, amount: amount, remaining: 0, status: 'closed')
+      sync resp
     end
 
     def cancel(order_id)
@@ -61,7 +63,7 @@ module BitBot
       resp = client.cancel order_id
       check_response(resp)
 
-      resp
+      sync order_id
     end
 
     def sync(order_id)
@@ -107,7 +109,7 @@ module BitBot
     def check_response(response)
       return if response.is_a?(Array)
       return if response.is_a?(TrueClass)
-      if error_msg = response['message']
+      if response.is_a?(Hash) && error_msg = response['message']
         case error_msg
         when 'Unauthorized - invalid access key'
           raise UnauthorizedError, error_msg
@@ -129,7 +131,8 @@ module BitBot
         amount: :remaining,
         amount_original: :amount,
         type: :side,
-        date: :timestamp
+        date: :timestamp,
+        currency: ''
       }
       order = Order.new rekey(hash, map).merge(original: hash, agent: self)
       order.side = case order.side
@@ -138,6 +141,7 @@ module BitBot
                    else
                      raise Error, "Don't know order #{order.inspect} 's side #{order.side}"
                    end
+      order.status = 'open' if order.status == 'pending'
       order
     end
 
@@ -155,6 +159,10 @@ module BitBot
 
     def have_key?
       @key && @secret
+    end
+
+    def logger
+      @logger ||= Logger.new(STDOUT)
     end
   end
 end
